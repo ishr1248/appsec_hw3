@@ -1,0 +1,6 @@
+Ishmael Rahim
+ir690
+
+The unreasonable monitoring of passwords was removed, and a counter that increments when 404 is returned was added.
+
+Helm was installed using snap. From there Prometheus was installed using the helm package manager. The .yaml file for configuring Prometheus was pointed to proxy-service:8080/metrics/
