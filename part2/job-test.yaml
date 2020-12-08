@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-test
+spec:
+  template:
+    spec:
+      containers:
+        - name: mycontainer
+          image: mycontainer_image:latest
+          imagePullPolicy: Never
+          command: ["/bin/bash"]
+          args: ["-c", "mysql $DBNAME < /setup.sql"]
+          env:
+            - name: MYSQL_HOST
+              value: mysql-service
+
+            - name: MYSQL_USER
+              value: root
+
+            - name: SECRET_GIFT_NAME
+              valueFrom:
+                gift-secret:
+                  name: name
+                  value: value
+
+            - name: DBNAME
+              value: GiftcardSiteDB
+
+      restartPolicy: Never

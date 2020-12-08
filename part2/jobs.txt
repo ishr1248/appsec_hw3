@@ -1,0 +1,9 @@
+Ishmael Rahim
+ir690
+
+-Separated setup.sql into two parts, one to set up the database, and one to add the data from the .csv's.
+
+-Made .yaml files for each job. One runs setup.sql to create the database. The other runs setup1.sql to seed the data. This container also has the
+argument --local-infile[=ON] to activate server side local file loading. The password for the database is acccesed as a Kubernetes secret in each .yaml file.
+
+-Changed Dockerfile to copy in both .sql files and the .csv's.
